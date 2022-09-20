@@ -1,0 +1,32 @@
+.addJobModal {
+    display: flex;
+    justify-content: center;
+}
+
+.addJobForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.addJobForm>input {
+    margin: 2px;
+}
+
+.tableRow>td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: none;
+}
+
+.company {
+    width: 20%;
+}
+
+.title {
+    width: 20%;
+}
+
+.salary {
+    width: 20%;
+}

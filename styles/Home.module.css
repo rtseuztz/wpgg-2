@@ -3,13 +3,20 @@
 }
 
 .main {
-  min-height: 100vh;
+  min-height:75vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.mainNoCenter {
+  min-height:75vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer {
@@ -72,7 +79,50 @@
   flex-wrap: wrap;
   max-width: 800px;
 }
+.jobTableHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.jobTable {
+  display: flex;
+  align-self: flex-start;
+  width: 100%;
+  background-color: rgb(35, 35, 35);
+  overflow-y: scroll;
+}
+.job {
+  display: grid;
+  grid-template-columns: 10% 40% 20% 25% 5%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.job:not(:first-child) {
+  padding-top: 5px;
+}
+.job:not(:last-child) {
+  border-bottom: solid 1px rgb(96, 96, 96);
+  padding-bottom: 5px;
+  border-collapse: collapse;
+}
+.job:first-child {
+  padding-top: 5px;
+}
+.job:last-child {
+  padding-bottom: 5px;
+}
+.job:hover {
+  background-color: rgb(73, 72, 72);
+  transition-duration: 500ms;
+  transition-property: background-color;
+}
 
+.job:hover .hidden {
+  display: block;
+}
+.hidden {
+  display: none;
+}
 .card {
   margin: 1rem;
   padding: 1.5rem;
