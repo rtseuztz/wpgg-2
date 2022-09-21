@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { JsxElement } from 'typescript';
-import {images} from '../styles/public/champion'
-type GameProps =  {
+import { images } from '../public/champion'
+import gameStyles from '../styles/Game.module.css'
+import Image from 'next/image'
+
+type GameProps = {
     participantsComponent: JSX.Element
 }
 function Game(props: GameProps) {
     return (
-        <div className="gameBox">
-            <div className="participantsBox">{props.participantsComponent}</div>
+        <div className={gameStyles.gameBox}>
+            <div className={gameStyles.participantsBox}>{props.participantsComponent}</div>
         </div>
     );
 }
@@ -15,7 +18,7 @@ function Game(props: GameProps) {
 enum Win {
     Win = "win",
     Lose = "lose"
-} 
+}
 type GameFacadeProps = {
     win: Win,
     gameStats: JSX.Element,
@@ -54,16 +57,22 @@ class GameFacade extends Component<GameFacadeProps, {
     }
     override render() {
         return (
-            <div className={"gameFacade " + this.props.win + this.state.expand} onClick={this.handleClick}>
+            <div className={[gameStyles.gameFacade, gameStyles[this.props.win], gameStyles[this.state.expand]].join(" ")} onClick={this.handleClick}>
                 <div className="gameDisplay">
-                    <img 
+                    <Image
+                        width={20}
+                        height={20}
+                        alt={this.props.championIcon}
+                        className={gameStyles.championIcon}
+                        src={`/champion/${this.props.championIcon}.png`} />
+                    {/* <img
                         alt=""
-                        className="championIcon" 
-                        src={images[this.props.championIcon + ".png"]} 
-                        />
-                    <div className="gameStats">{this.props.gameStats}</div>
-                    <div className="gameDate">{this.props.gameDate}</div>
-                    <div className='fullScreen'>
+                        className={gameStyles.championIcon}
+                        src={images[this.props.championIcon + ".png"]}
+                    /> */}
+                    <div className={gameStyles.gameStats}>{this.props.gameStats}</div>
+                    <div className={gameStyles.gameDate}>{this.props.gameDate}</div>
+                    <div className={gameStyles.fullScreen}>
                         O
                     </div>
                 </div>
@@ -78,9 +87,9 @@ type ParticipantListProps = {
 }
 function ParticipantList(props: ParticipantListProps) {
     return (
-        <div className="participantList">
-            <ul className="team1">{props.team1}</ul>
-            <ul className="team2">{props.team2}</ul>
+        <div className={gameStyles.participantsList}>
+            <ul className={gameStyles.team1}>{props.team1}</ul>
+            <ul className={gameStyles.team2}>{props.team2}</ul>
         </div>
     );
 }
@@ -88,7 +97,7 @@ function ParticipantList(props: ParticipantListProps) {
 enum Side {
     Left = "participantLeft",
     Right = "participantRight"
-} 
+}
 type ParticipantProps = {
     side: Side
     championIcon: string,
@@ -96,9 +105,9 @@ type ParticipantProps = {
 }
 function Participant(props: ParticipantProps) {
     return (
-        <div className={props.side}>
-            <img alt="" className="championIcon" src={images[props.championIcon + ".png"]} />
-            <div className="summonerName">{props.summonerName}</div>
+        <div className={gameStyles[props.side]}>
+            <img alt="" className={gameStyles.championIcon} src={images[props.championIcon + ".png"]} />
+            <div className={gameStyles.summonerName}>{props.summonerName}</div>
         </div>
     );
 }
@@ -132,14 +141,14 @@ class GameStats extends Component<GameStatsProps> {
 
     override render() {
         return (
-            <div className="gameStats">
-                <div className="kda">{this.props.kda}</div>
-                <div className="longKDA">{this.props.longkda}</div>
-                <div className="score">{this.props.score}</div>
+            <div className={gameStyles.gameStats}>
+                <div className={gameStyles.kda}>{this.props.kda}</div>
+                <div className={gameStyles.longkda}>{this.props.longkda}</div>
+                <div className={gameStyles.score}>{this.props.score}</div>
             </div>
 
         );
     }
 }
-export {Game, GameFacade, ParticipantList, Participant, GameStats, Side, Win}
+export { Game, GameFacade, ParticipantList, Participant, GameStats, Side, Win }
     //export default GameModule.Game

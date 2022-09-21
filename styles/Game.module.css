@@ -1,0 +1,149 @@
+
+
+/* Handle */
+
+#root {
+    height: 100%;
+}
+#main {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 100%
+}
+/* nav {
+    height: 100%; 
+    
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888888;
+
+    top: 0px;
+    left: 0px;
+    background: #07010ad1;
+
+}
+nav > div {
+    position: sticky;
+    top: 0px;
+    width: 100%;
+} */
+.title {
+    width: 100%;
+}
+#summoner_name_input {
+    border-radius: 20px;
+    color: #420a0a;
+    font-family: system-ui;
+    font-variant: petite-caps;
+    box-shadow: 0 0 0 1pt #888888;
+    outline: none;
+    transition: .1s;
+}
+    #summoner_name_input:focus {
+        box-shadow: 0 0 3pt 2pt violet;
+    }
+input#summoner_name_input::placeholder {
+    color: #420a0a;
+    font-family: system-ui;
+    font-variant: petite-caps;
+}
+#summoner_name_input_label {
+    color: #888888;
+}
+/* button {
+    border-radius: 20px;
+    width: 50%;
+} */
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+    .contentBox > div {
+        padding: 10px 0px 10px 0px;
+    }
+
+    .contentBox .gameFacade {
+        width: 90%;
+        border: 2px solid black;
+        margin-bottom: -2px;
+        border-collapse: collapse;
+        transition: max-height .5s cubic-bezier(0.5, 0.66, 0.15, 1.07);
+        max-height: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+.contentBox .gameFacade:hover {
+    /*max-height: 15em;*/
+}
+.contentBox .gameFacade.expand {
+    max-height: 15em;
+}
+.fullScreen {
+    background-image: url("./public/full_screen.svg");
+    height: 20px;
+}
+.contentBox .gameFacade .gameStats,
+.contentBox .gameFacade .gameDate {
+    color: #888888;
+    width: 30%;
+}
+.contentBox .gameList {
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.lose {
+    background-color: #390a30;
+}
+
+.win {
+    background-color: #212730;
+}
+.contentBox .gameFacade {
+    /*display: grid;
+    grid-template-columns: 2fr 1fr 1fr;*/
+}
+.contentBox .gameFacade .gameDisplay {
+    display: flex;
+}
+.contentBox .gameFacade .gameDisplay .championIcon {
+    width: 70px;
+}
+.participantList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.championIcon {
+    width:20px;
+}
+.contentBox .team1 {
+    padding-inline-start: 0px;
+}
+.participantLeft {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-column-gap: 5px;
+}
+.participantRight {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-column-gap: 5px;
+    text-align: right;
+}
+.participantRight .summonerName {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+.contentBox .gameBox {
+    color: #888888;
+}
+.contentBox .gameBox .summonerName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

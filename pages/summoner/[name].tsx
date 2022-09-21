@@ -3,6 +3,7 @@ import * as GameClass from '../../components/GameClasses'
 import _ from 'lodash';
 import $ from 'jquery';
 import { useRouter } from 'next/router';
+import gameStyles from '../../styles/Game.module.css'
 
 // function GetParams() {
 //     const webParams = useParams();
@@ -71,6 +72,7 @@ function User() {
     }, [user])
 
     const getUser = async (inputName: string): Promise<user> => {
+        if (inputName.length == 0) return new Promise((res, rej) => rej("User not found"))
         const res = await fetch("/api/user?name=" + inputName)
         if (res.status != 200) {
             return new Promise((res, rej) => rej("User not found"))
@@ -97,7 +99,8 @@ function User() {
     async function searchUser() {
         //let inputName = event.target.value
         const user = await getUser(inputName)
-        setUser(user);
+        if (user)
+            setUser(user);
         console.log(user);
 
     }
@@ -142,7 +145,7 @@ function User() {
                 }
             }
         }
-        return <ol className="gameList">{gameList}</ol>;
+        return <ol className={gameStyles.gameList}>{gameList}</ol>;
     }
     const getGameBox = (participantsComponent: any) => {
         return <GameClass.Game
@@ -190,7 +193,7 @@ function User() {
         console.log("X");
     }
     return (
-        <div className="contentBox">
+        <div className={gameStyles.contentBox}>
             {getGameRows()}
         </div>
     );

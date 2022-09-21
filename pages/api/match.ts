@@ -26,7 +26,10 @@ export default async function handler(
     const gameIDs: string[] = await userRes.json()
     let games: game[] = []
     gameIDs.forEach((gameID: string) => {
-        rateLimiter.addFunction(`https://americas.api.riotgames.com/lol/match/v5/matches/${gameID}?api_key=${key}`, (game: game) => {
+        rateLimiter.addFunction(async () => {
+            const resp = await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/${gameID}?api_key=${key}`)
+            const game = await resp.json();
+            console.log(game);
             games.push(game);
             console.log("game added, games added = " + games.length);
             if (games.length == gameIDs.length) {
