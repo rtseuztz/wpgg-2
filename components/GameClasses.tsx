@@ -65,11 +65,6 @@ class GameFacade extends Component<GameFacadeProps, {
                         alt={this.props.championIcon}
                         className={gameStyles.championIcon}
                         src={`/champion/${this.props.championIcon}.png`} />
-                    {/* <img
-                        alt=""
-                        className={gameStyles.championIcon}
-                        src={images[this.props.championIcon + ".png"]}
-                    /> */}
                     <div className={gameStyles.gameStats}>{this.props.gameStats}</div>
                     <div className={gameStyles.gameDate}>{this.props.gameDate}</div>
                     <div className={gameStyles.fullScreen}>
